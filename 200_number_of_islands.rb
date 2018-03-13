@@ -1,6 +1,9 @@
 # @param {Character[][]} grid
 # @return {Integer}
 
+# @param {Character[][]} grid
+# @return {Integer}
+
 def dfs(x, y, grid, visit)
   judge = ->(x, y) do
     return false if x>=grid.size || x<0
@@ -12,10 +15,11 @@ def dfs(x, y, grid, visit)
   visit[x][y] = true
   [[1, 0], [0, 1], [-1, 0], [0, -1]].each do |step|
     next_x, next_y = x+step[0], y+step[1]
-    bfs(next_x, next_y, grid, visit) if judge.call(next_x, next_y)
+    dfs(next_x, next_y, grid, visit) if judge.call(next_x, next_y)
   end
 end
 
+# 还没有测试
 def bfs(x, y, grid, visit)
   judge = ->(x, y) do
     return false if x>=grid.size || x<0
@@ -32,7 +36,7 @@ def bfs(x, y, grid, visit)
     visit[cur_x][cur_y] = true
     [[1, 0], [0, 1], [-1, 0], [0, -1]].each do |step|
       next_x, next_y = cur_x+step[0], cur_y+step[1]
-      bfs(next_x, next_y, grid, visit) if judge.call(next_x, next_y)
+      qu.push [next_x, next_y] if judge.call(next_x, next_y)
     end
   end
 end
