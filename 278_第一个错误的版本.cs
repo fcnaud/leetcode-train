@@ -10,18 +10,20 @@ public class Solution : VersionControl
 {
     public int FirstBadVersion(int n)
     {
-        return BinarySearch(1, n);
-    }
-
-    public int BinarySearch(int left, int right)
-    {
-        if (left >= right) return left;
-
-        int mid = left + (right - left) / 2;
-        if (IsBadVersion(mid)) {
-            return BinarySearch(left, mid);
-        } else {
-            return BinarySearch(mid+1, right);
+        int left = 1;
+        int right = n;
+        while (left < right)
+        {
+            int mid = left + (right - left) / 2;
+            if (IsBadVersion(mid))
+            {
+                right = mid;
+            }
+            else
+            {
+                left = mid + 1;
+            }
         }
+        return left;
     }
 }
