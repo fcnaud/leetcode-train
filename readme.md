@@ -123,6 +123,10 @@ https://segmentfault.com/a/1190000016825704
 * 035
 * 278
 
+### 字符串相关
+
+* 028 KMP 字符串匹配
+
 ## 一些参考资源网站
 
 * [OI Wiki](https://oi-wiki.org/)
